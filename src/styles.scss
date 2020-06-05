@@ -1,0 +1,200 @@
+body{
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    background-color: #f7f7f7;
+    letter-spacing: 0.6px;
+}
+
+
+body .ui-inputgroup .ui-inputgroup-addon {
+    border: 1px solid #e4dddd;
+    background-color: unset !important;
+    color: #848484 !important;
+    padding: 0.429em !important;
+    min-width: 2.5em !important;
+    color: #929495 !important;
+}
+
+input:focus{
+    outline: none !important;
+}
+
+
+body .ui-chkbox .ui-chkbox-box {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+body .ui-chkbox .ui-chkbox-box .ui-chkbox-icon {
+    overflow: hidden !important;
+    position: relative !important;
+    font-size: 11px !important;
+    background: #3fb57f !important;
+    border-color: #3fb57f !important;
+    color: #fff;
+    font-weight: 700;
+}
+
+body .ui-chkbox .ui-chkbox-box.ui-state-active {
+    border-color: unset;
+    background-color: unset;
+    color: #ffffff;
+}
+
+.ui-progress-spinner-svg {
+    width: 42px !important;
+}
+
+
+body .ui-progressbar {
+    height: 4px !important;
+}
+
+body .ui-progressbar .ui-progressbar-value {
+    background: #38ba7c !important;
+}
+
+
+input{
+    padding-left: 14px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    letter-spacing: 0.6px;
+    font-weight: 400;
+}
+
+button{
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    letter-spacing: 0.6px;
+}
+
+
+.input-error{
+    border-bottom: 1px solid #c40000 !important;
+}
+
+
+.success-txt{
+    color:#408a67 !important;
+    font-size: 13px !important;
+    font-weight: bolder;
+    margin-top: 4px;
+}
+
+.success-txt span{
+    color:#408a67 !important;
+    font-size: 13px !important;
+    position: absolute;
+}
+
+
+.error-txt{
+    color:#c40000 !important;
+    font-size: 13px !important;
+    margin-top: 4px;
+}
+
+.error-txt span{
+    color:#c40000 !important;
+    font-size: 13px !important;
+    position: absolute;
+}
+
+.addBlur{
+    cursor: not-allowed;
+    filter: opacity(0.7);
+}
+
+button:focus {
+    outline: 0 !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1) !important;
+    border-color: transparent !important;
+}
+button:hover {
+    outline: 0 !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1) !important;
+    border-color: transparent !important;
+}
+
+
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight, body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight {
+    color: #ffffff;
+    background-color: #5bbe9e !important;
+}
+
+
+.ui-fluid .ui-dropdown, .ui-fluid p-dropdown {
+    width: 100%;
+    min-width: 100%;
+    height: 42px;
+    border: 1px solid #e4dddd;
+}
+
+
+body .ui-menu .ui-menuitem:focus {
+    border: none;
+}
+
+
+body .ui-dropdown:not(.ui-state-disabled).ui-state-focus{
+    border-color:#e4dddd !important;
+    border: 1px solid #e4dddd !important;
+    box-shadow :unset !important
+}
+
+body .ui-dropdown:not(.ui-state-disabled):hover{
+    border: 1px solid #e4dddd !important;
+    border-color:#e4dddd !important;
+}
+
+
+.ui-dropdown label.ui-dropdown-label {
+    padding-left: 14px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    letter-spacing: 0.6px;
+    margin-top: 3px;
+}
+
+body .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider {
+    background-color: #66bb6a !important;
+}
+
+
+
+.fadeOut{
+    filter: opacity(0.3);
+    pointer-events: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+     -moz-appearance: textfield;
+}
+
+
+
+body .ui-inputtext:enabled:focus:not(.ui-state-error) {
+    outline: unset !important;
+    outline-offset: unset !important;
+    box-shadow: unset !important;
+    border-color: unset !important;
+}
+
+body .ui-inputtext {
+    border-color:#e4dddd;
+}
+
+
+.no-record-found{
+    text-align: center;
+}
+

@@ -1,0 +1,207 @@
+<div class="p-grid login-component" style="margin-top: 3.5em;">
+
+    <div
+        class="p-offset-1 p-sm-offset-2 p-md-offset-3 p-lg-offset-4 p-xl-offset-4 p-col-10 p-sm-8 p-md-6 p-lg-5 p-xl-4">
+
+        <div class="ui-fluid">
+            <div class="ui-g">
+
+                <div class="ui-g-12 ui-md-12 login-logo">
+                    <img src="assets/logo.svg" alt="Login page Logo">
+                </div>
+
+                <div *ngIf="view === 1" class="ui-g-12 ui-md-12" [ngClass]="{'addBlur': showLoader == true }">
+                    <form #LoginForm='ngForm' (ngSubmit)="loginForm(LoginForm)" novalidate>
+                        <p-progressBar mode="indeterminate" *ngIf="showLoader"></p-progressBar>
+
+                        <div class="ui-g-12 ui-md-12 main-content">
+                            <div class="ui-g-12 ui-md-12 login-header">
+                                Login to JobFault
+                            </div>
+
+                            <div class="ui-g-12 ui-md-12 input-content" style=" position: relative;">
+                                <input type="email" #lemail="ngModel" [(ngModel)]='email'
+                                    [ngClass]="{ 'input-error': LoginForm.submitted && lemail.invalid || emailExists }"
+                                    name="email" ngModel required email placeholder="Username or email"
+                                    [disabled]="showLoader">
+                                <span class="ui-inputgroup-addon show-icon input-icon"
+                                    [ngStyle]="{'top': lemail.invalid ? '30px' : '30px' }">
+                                    <i class="pi pi-user"></i>
+                                </span>
+                                <div *ngIf="LoginForm.submitted && lemail.invalid && lemail.errors.required"
+                                    class="error-txt"> <i class="pi pi-exclamation-circle"></i> <span>Email is
+                                        required.</span></div>
+                                <div *ngIf="lemail.invalid && !lemail.errors.required" class="error-txt"> <i
+                                        class="pi pi-exclamation-circle"></i><span>Please enter a
+                                        valid
+                                        email address.</span></div>
+                                <div *ngIf="!lemail.invalid && invalidLogin" class="error-txt">
+                                    <i class="pi pi-exclamation-circle"></i>
+                                    <span>Email or password is
+                                        incorrect.</span></div>
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-12 input-content" style=" position: relative;">
+
+                                <input type="password" placeholder="Password" #lpassword="ngModel" name="password"
+                                    [(ngModel)]='password' required ngModel [disabled]="showLoader"
+                                    [ngClass]="{ 'input-error': LoginForm.submitted && lpassword.invalid || invalidLogin}" />
+                                <span class="ui-inputgroup-addon show-icon input-icon"
+                                    [ngStyle]="{'top': lpassword.invalid ? '30px' : '30px' }">
+                                    <i class="pi pi-lock"></i>
+                                </span>
+
+                                <div *ngIf="LoginForm.submitted && lpassword.invalid && lpassword.errors.required"
+                                    class="error-txt"><i class="pi pi-exclamation-circle"></i><span> Password is
+                                        required.</span></div>
+
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-12 input-content">
+                                <p-checkbox name="remember_me" label="Remember me"  [(ngModel)]="rememberme" binary="true">
+                                </p-checkbox>
+                                <a routerLink="/forgot-password" class="forgot-password">Forgot password?</a>
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-12 input-content">
+                                <button pButton type="submit" class="ui-button-secondary" label="Login"
+                                    [disabled]="showLoader">
+                                </button>
+                            </div>
+
+                            <p class="btn-separator">
+                                <span>New to jobFault?</span>
+                            </p>
+
+                            <div class="ui-g-12 ui-md-12 input-content-signin">
+                                <button pButton type="button" routerLink="/register"
+                                    class="ui-button-secondary signup-btn" label="SignUp" [disabled]="showLoader">
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="view === 2" class="ui-g-12 ui-md-12" [ngClass]="{'addBlur': showLoader == true }">
+
+                    <p-progressBar mode="indeterminate" *ngIf="showLoader"></p-progressBar>
+
+                    <div class="ui-g-12 ui-md-12 main-content">
+                        <div class="ui-g-12 ui-md-12 login-header">
+                            Two-Step Verification
+                        </div>
+                        <div class="ui-g-12 ui-md-12 multiauth-explnation">
+                            In order to verify your identity, choose a verification method from the list below:
+                        </div>
+
+                        <div class="ui-g-12 ui-md-12 multiauth-body">
+
+                            <div class="p-grid" style="border-bottom: 1px solid #dbdbdb;" *ngIf="isVerifyApp"
+                                (click)="MultiloginType('mobileauth')">
+                                <div class="auth-icon" style="width: 20%;">
+                                    <i class="pi pi-mobile" style="font-size: 4em;margin-top: -8px;color: #979797;"></i>
+                                </div>
+                                <div class="auth-text" style="width: 70%; text-align: left;">
+                                    Authenticator App<br>
+                                    <span style="font-size: 12px;"> On your mobile device </span>
+                                </div>
+                                <div class="auth-text" style="width: 10%;text-align: left;">
+                                    <i class="pi pi-chevron-right" style="font-size: 1.5em; margin-top: 6px;"></i>
+                                </div>
+                            </div>
+
+
+                            <div class="p-grid" style="margin-top: 20px;" *ngIf="isVerifyMail"
+                                (click)="MultiloginType('mailauth')">
+                                <div class="auth-icon" style="width: 20%;">
+                                    <i class="pi pi-google" style="font-size: 3.5em;color: #979797;"></i>
+                                </div>
+                                <div class="auth-text" style="width: 70%; text-align: left;">
+                                    Email<br>
+                                    <span style="font-size: 12px;"> Email address in this format
+                                    </span><br>
+                                    <span style="font-size: 12px;">
+                                        {{showMailName}} </span>
+                                </div>
+                                <div class="auth-text" style="width: 10%;text-align: left;">
+                                    <i class="pi pi-chevron-right" style="font-size: 1.5em; margin-top: 6px;"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div *ngIf="view === 3" style="text-align: center;" class="ui-g-12 ui-md-12"
+                    [ngClass]="{'addBlur': showLoader == true }">
+
+                    <p-progressBar mode="indeterminate" *ngIf="showLoader"></p-progressBar>
+
+                    <div class="ui-g-12 ui-md-12 main-content">
+                        <div class="ui-g-12 ui-md-12 login-header">
+                            Two-Step Verification
+                        </div>
+
+
+                        <div class="ui-g-12 ui-md-12 multiauth-body">
+
+                            <div class="p-grid">
+                                <div class="auth-icon" style="width: 100%;">
+                                    <i class="pi pi-mobile" *ngIf="selectedType === 'mobile'"
+                                        style="font-size: 4em;margin-top: -8px;color: #979797;"></i>
+                                    <i class="pi pi-google" *ngIf="selectedType === 'mail'"
+                                        style="font-size: 4em;margin-top: -8px;color: #979797;"></i>
+                                </div>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-12 multiauth-explnation">
+                                In order to verify your identity, enter the verification code generated by your
+                                authenticator app.
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-12 input-content" style=" position: relative;">
+                                <input style="width: 100%;  
+                                height: 52px;
+                                padding-left: 33%;
+                                font-size: 23px;
+                                border: 1px solid #e4dddd;" type="number" [(ngModel)]='code' name="code" ngModel
+                                    [ngClass]="{ 'input-error': invalidCode }"
+                                    (input)="checkCode()" placeholder="Enter Code" [disabled]="showLoader">
+                            </div>
+
+                            <div *ngIf="invalidCode" class="error-txt" style="margin-left: -30%;">
+                                <i class="pi pi-exclamation-circle"></i>
+                                <span>Invalid code.</span></div>
+
+
+                        </div>
+
+
+                        <div class="ui-g-12 ui-md-12 input-content-signin">
+                            <button pButton type="button" (click)="anotherMethod()"
+                                class="ui-button-secondary signup-btn" label="Back" [disabled]="showLoader"
+                                *ngIf="!isVerifyMail || !isVerifyApp">
+                            </button>
+
+                            <button pButton type="button" (click)="anotherMethod()"
+                                class="ui-button-secondary signup-btn" label="Another way" [disabled]="showLoader"
+                                *ngIf="isVerifyMail && isVerifyApp">
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

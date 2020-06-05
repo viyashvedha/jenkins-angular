@@ -1,0 +1,109 @@
+.register-component{
+
+    .register-header{
+        text-align: center !important;
+        margin-bottom: 11px;
+        margin-top: 11px;
+        font-size: 20px;
+    }
+    .register-logo{
+        padding-left: 28%;
+    }
+    
+    .main-content{
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 7px;
+    }
+    
+    .inside-content{
+        margin-top: 14px !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+    
+    .inside-content input{
+        width: 100%;height: 42px;padding-left: 54px;font-size: 14px;border: 1px solid #e4dddd;
+    }
+    
+    .inside-content button{
+        background: linear-gradient(to right, #01b0ab 0%,#38ba7c 100%);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        border-radius: 4px;
+        height: 47px;
+        margin: 0 0 30px;
+        text-align: center;
+        transition: 0.2s ease-in-out;
+    }
+    
+    
+    
+    .signin-content{
+        text-align: center;
+        font-size: 15px;
+        margin-top: -27px;
+        // color: #878787;
+    }
+    
+    .siginin-link{
+        color:#38ba7c;
+        cursor: pointer;
+    }
+    
+    
+    a, a:hover{
+        color:#38ba7c;
+    }
+    
+    
+    .change-country{
+        color: #38ba7c;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+    
+    
+    .change-country-text{
+        font-size: 12px;
+        color: #878787;
+    }
+    
+    .ui-inputgroup-addon{
+        width: 12%;
+    }
+    
+    .ui-inputgroup-addon i{
+        font-size: 23px;
+    }   
+    
+    .inside-content .show-icon{
+        position: absolute;
+        // top: 50%;
+        left: 38px;
+        transform: translateY(-50%);
+    }
+    
+    .input-icon .pi {
+        font-size: 21px;
+        color: #02a370;
+    }
+    
+
+}
+
+
+
+
+::ng-deep {
+    
+    body .ui-inputgroup .ui-inputgroup-addon {
+        border-color: #d8d3d3;
+    }
+
+    body .ui-button.ui-button-text-only .ui-button-text {
+        color: #fff;
+    }
+}

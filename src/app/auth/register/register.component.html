@@ -1,0 +1,110 @@
+<div class="p-grid register-component" style="margin-top: 3.5em;">
+
+    <div
+        class="p-offset-1 p-sm-offset-2 p-md-offset-3 p-lg-offset-4 p-xl-offset-4 p-col-10 p-sm-8 p-md-6 p-lg-5 p-xl-4">
+
+        <div class="ui-fluid">
+            <div class="ui-g">
+
+                <div class="ui-g-12 ui-md-12 register-logo">
+                    <img src="assets/logo.svg" alt="Login page Logo">
+                </div>
+
+                <div class="ui-g-12 ui-md-12" [ngClass]="{'addBlur': showLoader == true }">
+                    <form #registerForm='ngForm' (ngSubmit)="callRegisterForm(registerForm)" novalidate>
+                        <p-progressBar mode="indeterminate" *ngIf="showLoader"></p-progressBar>
+
+                        <div class="ui-g-12 ui-md-12 main-content">
+                            <div class="ui-g-12 ui-md-12 register-header">
+                                SignUp to LunarPen
+                            </div>
+
+                            <div class="ui-g-12 ui-md-12 inside-content" style=" position: relative;">
+                                <input type="email" #remail="ngModel" [(ngModel)]='email' (keyup)="checkemailExists()"
+                                    [ngClass]="{ 'input-error': registerForm.submitted && remail.invalid || emailExists }"
+                                    name="email" ngModel required email placeholder="Email" [disabled]="showLoader" />
+
+                                <span class="ui-inputgroup-addon show-icon input-icon"
+                                    [ngStyle]="{'top': remail.invalid ? '30px' : '30px' }">
+                                    <i class="pi pi-user"></i>
+                                </span>
+                                <div *ngIf="registerForm.submitted && remail.invalid && remail.errors.required"
+                                    class="error-txt"> <i class="pi pi-exclamation-circle"></i> <span>Email is
+                                        required.</span></div>
+                                <div *ngIf="remail.invalid && !remail.errors.required" class="error-txt"> <i
+                                        class="pi pi-exclamation-circle"></i><span>Please enter a
+                                        valid
+                                        email address.</span></div>
+                                <div *ngIf="!remail.invalid && emailExists" class="error-txt"> <i
+                                        class="pi pi-exclamation-circle"></i><span>Email already
+                                        exists.</span></div>
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-12 inside-content" style=" position: relative;">
+                                <input type="password" #rpassword="ngModel" [(ngModel)]='password'
+                                    placeholder="Create password"
+                                    [ngClass]="{ 'input-error': registerForm.submitted && rpassword.invalid }"
+                                    name="password" ngModel required [disabled]="showLoader">
+
+                                <span class="ui-inputgroup-addon show-icon input-icon"
+                                    [ngStyle]="{'top': rpassword.invalid ? '30px' : '30px' }">
+                                    <i class="pi pi-lock"></i>
+                                </span>
+                                <div *ngIf="registerForm.submitted && rpassword.invalid && rpassword.errors.required"
+                                    class="error-txt"><i class="pi pi-exclamation-circle"></i><span> Password is
+                                        required.</span></div>
+                            </div>
+
+
+                            <div class="ui-g-12 ui-md-12 inside-content" style=" position: relative;">
+                                <input type="password" #rc_password="ngModel" [(ngModel)]='c_password'
+                                    placeholder="Confirm Password"
+                                    [ngClass]="{ 'input-error': registerForm.submitted && rc_password.invalid || (rc_password.value !== rpassword.value && !rc_password.invalid)}"
+                                    name="confirmpassword" ngModel required [disabled]="showLoader">
+                                <span class="ui-inputgroup-addon show-icon input-icon"
+                                    [ngStyle]="{'top': rc_password.invalid ? '30px' : '30px' }">
+                                    <i class="pi pi-lock"></i>
+                                </span>
+                                <div *ngIf="registerForm.submitted && rc_password.invalid && rc_password.errors.required"
+                                    class="error-txt"><i class="pi pi-exclamation-circle"></i><span> Confirm password is
+                                        required.</span></div>
+                                <div *ngIf="rc_password.value !== rpassword.value && !rc_password.invalid"
+                                    class="error-txt"><i class="pi pi-exclamation-circle"></i> <span>Password
+                                        mismatch.</span></div>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-12 inside-content" style="margin-top: unset;font-size: 12px;">
+                                <span class="change-country-text" *ngIf="!showCountries">You are in
+                                    {{selectedCountryName}}. If not</span><span *ngIf="!showCountries"
+                                    class="change-country" (click)="selectCountry()">change</span>
+                                <p-dropdown *ngIf="showCountries" [options]="cities1" name="country"
+                                    [(ngModel)]="selectedCountryCode" dropdownIcon=" pi pi-caret-down "></p-dropdown>
+                            </div>
+
+
+
+
+
+                            <div class="ui-g-12 ui-md-12 inside-content">
+                                <button pButton type="submit" class="ui-button-secondary" label="SignUp"
+                                    [disabled]="showLoader">
+                                </button>
+                            </div>
+
+
+
+
+                            <div class="ui-g-12 ui-md-12 signin-content">
+                                <span>
+                                    Already have an account? <span class="siginin-link"><a
+                                            routerLink="/login">Signin</a> </span>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
